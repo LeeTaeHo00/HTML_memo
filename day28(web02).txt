@@ -1,0 +1,279 @@
+day28(웹 표준 2일차)
+	복습-> CSS-> Display -> flex box -> 시멘틱 태그 -> 고급 선택자
+
+	DB중심설계이기 때문에 필드와 컬럼을 같게
+0. 복습
+1) HTML(Hyper Text Markup Language)
+	웹 문서를 만드는 언어
+	vs code => 기본 구조 단축키 ! + enter
+	<!DOCTYPE HTML>
+		<html>
+			<head>
+				제목태그<h1~h6> <br>, <hr> 
+			</head>
+			<body>
+		</html>
+
+2) 태그 기본 구조
+	<시작태그 속성 = "속성값" 속성2 = "속성값"> 내용(컨텐츠) </종료태그> -> 엘리멘트
+
+3) html 태그
+	<!-- -->
+	<h1(제일킄> 	블록
+	<b> 강조(볼드체) 	인라인
+	<i> 기울임	인라인
+	<hr> <br<	블록
+	<ol> 순서
+	<ul> 순서 X
+		<li> 리스트 블록
+	<table> 테이블
+	<caption> 표제목
+	<tr> 행
+	<th> 제목, 굵게 가운데
+	<td> 열(내용) 
+		rowspan, colspan 행열 병합 속성
+	
+	<img src = "경로"> 인라인 요소
+	<a href = "주소"> <이미지추가 가능> </a> 링크, 인라인
+	<form> 입력
+		actoin
+		method
+	<label for = ""> input에 대한 설명
+	<input id = ""> 
+		text
+		password
+		date
+		tel
+		hidden
+		submit
+		reset
+		radio
+		checkbox
+		hidden
+
+		속성 
+			name 
+			value	라디오 체크박스는 서버전송, submit은 버튼이름 변경
+			required 필수값
+			autofocus
+			readonly
+			disable
+			checked 기본값
+
+
+	<select>
+	<option> 옵션
+		value
+		selected
+			
+
+
+	<fieldset> label 묶음
+		<legend> 필드셋이름
+
+	<textarea>
+	속성	cols
+		rows
+	
+	<button> 인풋타입을
+		submit
+		reset
+		button 
+
+	<span>	인라인
+	<div>	블록
+
+
+4) CSS
+	HTML로 만든 웹 문서의 스타일을 담당한다
+	방법
+	- 인라인 스타일 : 스타일을 적용시킬 태그에 style 속성을 사용한다.	
+	- 내부 스타일 : <head> 영역에서 <style> 태그를 사용하여 사용
+		선택자가 반드시 필요
+			선택자{속성 : 속성값; }
+		태그선택자 태그명, 클래스 선택자 . , 아이디 선택자 #아아디명
+	- 외부 스타일 : 별도의 Css파일을 만들어 적용시킨다
+		<head> 영역<link rel = "stylesheet" href ="css파일경로">
+
+
+------------------------------------------------------------------------
+1. Box Model 박스모델 *****무진장 중요함****
+	HTML의 모든 요 소는 일정한 영역을 차지하게 된다
+	CSS에서는 이런 영역을 Box Model이라고 한다
+
+1) 박스모델의 구성
+	margin : 바깥여백(테두리 밖의 여백)
+	border : 테두리
+	padding : 안쪽여백(테두리와 컨텍츠 사이의 여백)
+	contents : 컨텐츠의 영역
+	
+	블록요소의 박스모델은 전체 설정되며 margin 설정 시 위아래 간격은 중복 적용되지 않는다.
+		width hight 정렬가능하다
+	인라인 요소의 박스모델은 전체 설정되며 margin 설정 시 좌우 간격은 중복적용도니다.
+		width height 정렬 되지 않는다.
+
+2) 박스모델 CSS 속성
+- 내용(contents)
+	width : 너비;
+	height : 높이;
+	단위는 기복적으로 px단위이며 그 외에도 여러단위가 있다.
+	인라인 요소는 지정이 안된다.
+	
+- border
+	border : 굵기 모양(형태) 색상;
+	
+- margin
+	margin : 4방향;
+	margin : 상하 좌우;
+	margin : 상 좌우 하;
+	margin : 상 우 하 좌; (시계 방향)
+	
+- padding
+	padding : 4방향;
+	padding : 상하 좌우
+	padding : 상 좌우 하
+	padding : 상 우 하 좌 (시계방향)
+
+	auto를 사용하면 요소를 중앙에 위치하게 할 수 있다.
+
++) css 우선순위 규칙
+	!important > 인라인스타일 > ID 선택자 > 클래스 선택자, 속성선택자 > 태그 선택자 > 전역 선택자
+	속성선택자	[attr=value], :hover 등
+
+2. flex box ************* 겁나게 중요함 **********
+=> flexible box layout
+	레이아웃을 효율적으로 구성하기위한 css의 레이아웃 모델
+	요소의 정렬, 크기조절, 순서 지정등을 유연하고 간단하게 처리할 수 있다.
+
+레이아웃을 만들 때 사욯나는 속성
+	float
+	display의 flex box
+	grid
+
+1) flex box의 구성
+	flex container : 레이아웃을 적용하여 배치하려는 요소들을 감싸고 있는 부모요소
+	flex item : 실질직으로 배치하려는 요소이며 flex container의 자식 요소이다
+		자식요소인 flex item은 여러개 만들 수 있다.
+	주축(main axis) : 자식요소가 배치되는 방향
+	교차축(cross axis) : 주축을 가로지는 방향
+	
+	
+2) flex container 만들기
+	컨테이너로 사용할 부모 요소에 display:flex 속성을 지정한다.
+
+3) flex container의 주요 속성
+	배치하려는 요소들의 전체흐름, 정렬과 관련된 속성
+
+- display
+	display : flex;					flex container 지정
+	flex-direction:row|column			주축의 방향을 지정하는 속성
+	justify-content : center | space-between | space-around;`	턴테이너 주축을 기준으로 아이템 정렬
+		center = 중앙정렬
+		space-between : 첫 아이템과 끝 아이템을 컨테이너 양쪽 끝에 배치하고 나머지 아이템들은 동일한 간격 정렬
+				margin이 없으면 완전히 껑으로 붙는다.
+		spafce-around : 모든 아이템을 동일한 간격으로 높음
+	align-items : center | space-between | space-around;	컨테이너 교찾축을 기준으로 정렬
+	flex-wrap : nowrap | wrap; 컨테이너 내부의 요소들이 많거나 크기가 커서 컨테이너를 넘어가게 되었을 때
+					한줄로 보여줄지 여러줄로 보여줄것이지 지정하는 속성
+		
+			nworap : flex-wrap 의 기본값, 줄바꿈을 하지 않고 한줄로 보여준다
+				만약 컨테이너가 작다면 각각의 아이템의 크기가 줄어든다
+			wraop : 컨테이너의 크기가 작다면 여러줄로 보여준다
+
+
+3. display 속성
+	HTML에서 요소를 어떻게 표시할지 결정한다
+	HTML 요소들은 기본적으로 display속성값이 설정되어있따.
+	블록요소->display:block
+	인라인요소->display:inline
+
+- display속성의 기본 4가지 값
+	none
+		요소를 보이지 않게 설정한다.
+		단순히 투명하게 안보이는 것이 아니라 아예 사라지게 되므로 공간을 차지하지 안흔ㄷ나.
+
+	block
+		블록요소로 설정한다
+		기본적으로 가로영역을 모두 차지한다
+	
+	inline
+		인라인요소로 설정한다.
+		기본적으로 컨텐츠의 크기만큼만 영역을 차지한다.
+		블록 요소와 달리 컨텐츠의 너비, 높이를 설정할 수 없다.
+
+	inline-block
+		인라인 블록 요소로 설정한다.
+		인라인처럼 컨텐츠만큼만 영역을 차지하지만 블록처럼 컨텐츠의 너비와 높이를 설정할 수 있다.
+		내부는 block요소, 외부는 inline요소의 특징을 갖는다.
+
+
+
+
+4. 시맨틱태그(sematic tag)
+	태그 자체적으로 의미가 있는 태그
+
+1) 시맨틱 태그를 사용하는 이유
+	코드의 가독성과 구조적 명확성
+	SEO(검색엔진 최적화)에 유리
+	접근성(Accessibility) 향상
+	유지보수와 확장성
+
+2) 시맨틱 태그의 종류
+	<header>	페이지의 헤더영역, 최상단에 위치함
+	<footer>	페이지의 최하단에 위치함, 회사 정보 등을 담은 푸터영역
+	<nav>		다른 페이지로 이동하는 요소들을 담은 네비게이션 영역
+	<main>		주 컨텐츠가 들어가는 영역
+	<aside>		주 내용과는 연관성이 낮은 분리된 영역, 주로 사이드바로 사용
+	<article>	독립되고 반복적으로 재사용가능한 컨텐츠 영역
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
